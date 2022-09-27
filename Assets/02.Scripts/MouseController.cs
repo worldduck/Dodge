@@ -9,7 +9,6 @@ public class MouseController : MonoBehaviour
 
     public Transform Potal;
 
-
     void Start()
     {
         // 게임 오브젝트에서 Rigidbody 컴포넌트를 찾아 playerRigidbady(변수)에 할당
@@ -46,7 +45,17 @@ public class MouseController : MonoBehaviour
     {
        if (other.tag == "Cheese")
         {
+            // 내 위치를 포탈 오브젝트 위치로 이동
             transform.position = Potal.position;
+        }
+
+       if (other.tag == "Goal")
+        {
+            gameObject.SetActive(false);
+            // 씬에 존재하는 GameManager 타입의 오브젝트를 찾아서 가져오기
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            // 가져온 GameManager 오브젝트의 EndGame() 메서드 실행
+            gameManager.WinGame();
         }
     }
 

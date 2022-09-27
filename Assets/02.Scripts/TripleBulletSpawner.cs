@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatFootSpawner : MonoBehaviour
+public class TripleBulletSpawner : MonoBehaviour
 {
-    public GameObject catFootBulletPrefab; // 생성할 탄알의 원본 프리팹
-    public float spawnRateMin = 0.5f; // 최소 생성 주기
-    public float spawnRateMax = 3f; // 최대 생성 주기
+    public GameObject tripleBulletPrefab; // 생성할 탄알의 원본 프리팹
+    public float spawnRateMin = 0.4f; // 최소 생성 주기
+    public float spawnRateMax = 2f; // 최대 생성 주기
 
     private Transform target; // 발사할 대상
     private float spawnRate; // 생성 주기
@@ -37,10 +37,9 @@ public class CatFootSpawner : MonoBehaviour
 
             // bulletPrefab 복제본을
             // transform.position 위치와 transform.rotation 회전으로 생성
-            GameObject catfoot
-                = Instantiate(catFootBulletPrefab, transform.position, transform.rotation);
-            // 생성된 bullet 게임 오브젝트의 정면 방향이 target을 향하도록 회전
-            catfoot.transform.LookAt(target);
+            GameObject triplebullet
+                = Instantiate(tripleBulletPrefab, transform.position, transform.rotation);
+            
             // 다음번 생성 간격을 spawnRateMin, spawnRateMin 사이에서 랜덤 지정
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         }
